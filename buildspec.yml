@@ -1,0 +1,27 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.8  # You can specify any Python version you prefer
+    commands:
+      - echo Installing Python dependencies...
+      - pip install flask  # Ensure you have a requirements.txt file in your project
+
+  pre_build:
+    commands:
+      - echo No pre-build steps required
+
+  build:
+    commands:
+      - echo Running Flask app...
+      # Add any commands here to run tests or other build tasks
+
+  post_build:
+    commands:
+      - echo Build completed successfully.
+
+artifacts:
+  files:
+    - '**/*'  # This will include all files in the current directory and subdirectories
+  base-directory: '.'  # Directory to use as the base for your artifact
