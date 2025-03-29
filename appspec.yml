@@ -1,16 +1,21 @@
 version: 0.0
 os: linux
 files:
-  - source: /  # This refers to everything in the root of your repository
-    destination: /opt/codedeploy-agent/deployment-root/19c6dfbc-9a51-44c4-a2a8-d0ddd2451a26/d-LJKDJ4ISA/deployment-archive # Directory on EC2 where the files will be copied
-
+  - source: /deployment-archive/
+    destination: /home/ec2-user/my-flask-app/
 hooks:
-  BeforeInstall:
+  ApplicationStop:
     - location: scripts/stop_application.sh
       timeout: 180
-  AfterInstall:
+      runas: root
+  BeforeInstall:
     - location: scripts/install_dependencies.sh
       timeout: 180
-  ApplicationStart:
+      runas: root
+  AfterInstall:
     - location: scripts/start_application.sh
       timeout: 180
+      runas: ec2-user
+ 
+  
+
