@@ -1,21 +1,14 @@
 version: 0.0
 os: linux
-files:
-  - source: /deployment-archive/
-    destination: /home/ec2-user/my-flask-app/
+
 hooks:
-  ApplicationStop:
-    - location: scripts/stop_application.sh
-      timeout: 180
-      runas: root
   BeforeInstall:
     - location: scripts/install_dependencies.sh
       timeout: 180
       runas: root
+
   AfterInstall:
     - location: scripts/start_application.sh
       timeout: 180
-      runas: ec2-user
- 
+      runas: root
   
-
