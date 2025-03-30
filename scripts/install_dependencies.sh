@@ -33,7 +33,8 @@ python3.11 -m ensurepip --upgrade
 python3.11 -m pip install --upgrade pip
 python3.11 -m pip install Flask
 python3.11 -m pip install gunicorn
-python3.11 -m pip install uwsgi
+python3.11 -m pip install waitress
+
 
 
 echo "Python upgrade and setup completed!"
